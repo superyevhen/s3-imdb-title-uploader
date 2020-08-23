@@ -1,0 +1,29 @@
+spring:
+  batch:
+    initialize-schema: always
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    jdbc-url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}?currentSchema=${SCHEMA_NAME}
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        cloud:
+          task: DEBUG
+      hibernate:
+        SQL: DEBUG
+        type: off
+
+cloud:
+  aws:
+    stack:
+      auto: false
+    region:
+      static: eu-west-1
+    credentials:
+      accessKey: ${AWS_ACCESS_KEY}
+      secretKey: ${AWS_SECRET_KEY}
